@@ -1,37 +1,31 @@
 import ReactDOM from 'react-dom';
 import React, { useEffect, useState } from "react";
+import { CardItem } from './components/carditem'
+import Server from './api/ssr-server'
+import Fab from '@material-ui/core/Fab';
+import AddIcon from '@material-ui/icons/Add';
 
-function ListOfPersons({ persons }) {
+const server = new Server();
+
+function App({ persons }) {
+
   return (
     <div>
       <h1>PipeDrive</h1>
       <h2>People's List</h2>
-      <hr/>
-      <ul>
-        {persons.data.map(person => <PersonCard key={person.id} {...person} />)}
-      </ul>
+      <hr />
+      <Fab color="primary" aria-label="add">
+        <AddIcon />
+      </Fab>
+      {persons.data.map(person => <CardItem  key={person.id} {...person} />)}
     </div>
   )
-}
-
-class PersonCard extends React.Component {
-  render() {
-    const person = this.props;
-    return (
-      <div className="pipedrivePerson">
-        <div className="info">
-          <div className="fullname">{person.first_name} {person.last_name}</div>
-        </div>
-      </div>
-    );
-  }
 }
 
 
 export async function getStaticProps() {
 
-  const res = await fetch('http://localhost:1800/')
-  const persons = await res.json()
+  const persons = await server.getAllPersons();
 
   return {
     props: {
@@ -40,5 +34,4 @@ export async function getStaticProps() {
   }
 }
 
-export default ListOfPersons
-
+export default App
