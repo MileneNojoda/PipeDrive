@@ -11,29 +11,23 @@ import PersonIcon from '@material-ui/icons/Person';
 import { blue } from '@material-ui/core/colors';
 
 const useStyles = makeStyles((theme) => ({
-    root: {
-        width: '100%',
-        maxWidth: '36ch',
-        backgroundColor: theme.palette.background.paper,
-    },
-    inline: {
-        display: 'inline',
-    },
-}));
-
-
-const styles =
-{
     avatar: {
         backgroundColor: blue[100],
         color: blue[600],
         float: "right",
     },
-};
+    card:{
+        padding: "20px",
+        border: "solid 1px #696969",
+        borderRadius: "4px",
+        margin: "20px",
+    },
+  }));
+
 
 
 function CardItem(props) {
-
+    const classes = useStyles();
     const person = props;
     const [open, setOpen] = React.useState(false);
 
@@ -46,7 +40,7 @@ function CardItem(props) {
     };
 
     return (
-        <Card id={person.id} >
+        <Card id={person.id} className={classes.card}>
             <CardActionArea onClick={handleOpen}>
                 <CardContent>
                     <Typography color="textSecondary" gutterBottom>
@@ -57,7 +51,7 @@ function CardItem(props) {
                     <Typography variant="body2" component="p">
                         <br />
                         <ApartmentIcon></ApartmentIcon>
-                        <Avatar className={styles.avatar}>
+                        <Avatar className={classes.avatar}>
                             <PersonIcon />
                         </Avatar>
                     </Typography>

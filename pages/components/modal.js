@@ -6,21 +6,15 @@ import PersonIcon from '@material-ui/icons/Person';
 import { blue } from '@material-ui/core/colors';
 import Button from '@material-ui/core/Button';
 import DeleteIcon from '@material-ui/icons/Delete';
-import IconButton from '@material-ui/core/IconButton';
-
-
-function rand() {
-  return Math.round(Math.random() * 20) - 10;
-}
+import CloseIcon from '@material-ui/icons/Close';
 
 function getModalStyle() {
-  const top = 50 + rand();
-  const left = 50 + rand();
+  const pos = 50;
 
   return {
-    top: `${top}%`,
-    left: `${left}%`,
-    transform: `translate(-${top}%, -${left}%)`,
+    top: `${pos}%`,
+    left: `${pos}%`,
+    transform: `translate(-${pos}%, -${pos}%)`,
   };
 }
 
@@ -47,6 +41,9 @@ const useStyles = makeStyles((theme) => ({
   button: {
     margin: theme.spacing(1),
   },
+  close: {
+    float: "right",
+  },
 }));
 
 function SimpleModal(props) {
@@ -54,14 +51,15 @@ function SimpleModal(props) {
   const [modalStyle] = React.useState(getModalStyle);
 
   const person = props.person;
-  console.log(person);
-  // function handleClose() {
-  //   onClose();
-  // };
+  const [open, setOpen] = React.useState(false);
 
-  // function handleOpen() {
-  //     open();
-  //   };
+  function handleClose() {
+    props.onClose();
+  };
+
+  function deletePerson() {
+    console.log(person.id);
+  }
 
   return (
     <div>
@@ -73,7 +71,9 @@ function SimpleModal(props) {
         <div>
           <div style={modalStyle} className={classes.paper}>
             <div>
-              <p id="simple-modal-title" className={classes.alignleft}>Person Information</p>
+              <p id="simple-modal-title" className={classes.alignleft}>Person Information
+              <CloseIcon onClick={handleClose} className={classes.close} /></p>
+
               <h3 id="simple-modal-title" className={classes.aligncenter}>{person.name}</h3>
               <Avatar className={classes.avatar}>
                 <PersonIcon />
@@ -92,9 +92,9 @@ function SimpleModal(props) {
               color="primary"
               className={classes.button}
               startIcon={<DeleteIcon />}
-            >
+              onClick={deletePerson}>
               Delete
-      </Button>
+            </Button>
           </div>
         </div>
       </Modal>
