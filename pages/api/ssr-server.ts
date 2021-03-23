@@ -1,7 +1,4 @@
-import ServerHelper from './serverhelper'
 
-
-const serverHelper = new ServerHelper();
 const express = require('express');
 const app = express();
 const lib = require('pipedrive');

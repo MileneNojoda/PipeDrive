@@ -7,7 +7,6 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import { makeStyles } from '@material-ui/core/styles';
 import React, { useEffect, useState } from "react";
 import { SimpleModal } from './modal'
-import PersonIcon from '@material-ui/icons/Person';
 import { blue } from '@material-ui/core/colors';
 
 const useStyles = makeStyles((theme) => ({
@@ -20,11 +19,9 @@ const useStyles = makeStyles((theme) => ({
         padding: "20px",
         border: "solid 1px #696969",
         borderRadius: "4px",
-        margin: "20px",
+        margin: "20px !important",
     },
   }));
-
-
 
 function CardItem(props) {
     const classes = useStyles();
@@ -39,6 +36,8 @@ function CardItem(props) {
         setOpen(false);
     };
 
+    let organization = person['084904d6d769ff8d6ddd8013450bef4c72dc3b22'];
+
     return (
         <Card id={person.id} className={classes.card}>
             <CardActionArea onClick={handleOpen}>
@@ -46,14 +45,12 @@ function CardItem(props) {
                     <Typography color="textSecondary" gutterBottom>
                         {person.name}
                     </Typography>
-                    <Typography variant="h5" component="h2">
-                    </Typography>
                     <Typography variant="body2" component="p">
                         <br />
                         <ApartmentIcon></ApartmentIcon>
                         <Avatar className={classes.avatar}>
-                            <PersonIcon />
-                        </Avatar>
+                        </Avatar>                  
+                        {organization}
                     </Typography>
                 </CardContent>
                 <SimpleModal

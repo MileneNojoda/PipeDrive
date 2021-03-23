@@ -2,22 +2,22 @@ import React, { useEffect, useState } from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Avatar from '@material-ui/core/Avatar';
-import PersonIcon from '@material-ui/icons/Person';
 import { blue } from '@material-ui/core/colors';
 import Button from '@material-ui/core/Button';
 import AddIcon from '@material-ui/icons/Add';
 import CloseIcon from '@material-ui/icons/Close';
 import TextField from '@material-ui/core/TextField';
 
+
 function getModalStyle() {
     const pos = 50;
-
+  
     return {
-        top: `${pos}%`,
-        left: `${pos}%`,
-        transform: `translate(-${pos}%, -${pos}%)`,
+      top: `${pos}%`,
+      left: `${pos}%`,
+      transform: `translate(-${pos}%, -${pos}%)`,
     };
-}
+  }
 
 const useStyles = makeStyles((theme) => ({
     paper: {
@@ -51,12 +51,9 @@ function FormModal(props) {
     const classes = useStyles();
     const [modalStyle] = React.useState(getModalStyle);
 
-    const [open, setOpen] = React.useState(false);
-
     function handleClose() {
         props.onClose();
     };
-
 
     return (
         <div>
@@ -69,21 +66,21 @@ function FormModal(props) {
                     <div style={modalStyle} className={classes.paper}>
                         <div>
                             <p id="simple-modal-title" className={classes.alignleft}>
-              <CloseIcon onClick={handleClose} className={classes.close} /></p>
+                                <CloseIcon onClick={handleClose} className={classes.close} />
+                            </p>
 
                             <h3 id="simple-modal-title" className={classes.aligncenter}>New Person Information</h3>
                             <Avatar className={classes.avatar}>
-                                <PersonIcon />
                             </Avatar>
                         </div>
                         <hr />
                         <form className={classes.root} noValidate autoComplete="off">
-                            <TextField id="standard-basic" label="Name" fullWidth/>
-                            <TextField id="standard-basic" label="Phone Number" fullWidth/>
-                            <TextField id="standard-basic" label="Email" fullWidth/>
-                            <TextField id="standard-basic" label="Organization" fullWidth/>
-                            <TextField id="standard-basic" label="Assistant" fullWidth/>
-                            <TextField id="standard-basic" label="Groups" fullWidth/>
+                            <TextField id="standard-basic" label="Name" fullWidth />
+                            <TextField id="standard-basic" label="Phone Number" fullWidth />
+                            <TextField id="standard-basic" label="Email" fullWidth />
+                            <TextField id="standard-basic" label="Organization" fullWidth />
+                            <TextField id="standard-basic" label="Assistant" fullWidth />
+                            <TextField id="standard-basic" label="Groups" fullWidth />
                             <TextField id="standard-basic" label="Location" fullWidth />
                         </form>
                         <hr />
@@ -93,7 +90,7 @@ function FormModal(props) {
                             className={classes.button}
                             startIcon={<AddIcon />}>
                             Add Person
-            </Button>
+                        </Button>
                     </div>
                 </div>
             </Modal>
