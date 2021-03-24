@@ -1,7 +1,5 @@
 #Challenge PipeDrive
 
-[Live at angel.agem.io](https://angel.agem.io/)
-
 This app uses Next's [custom server and routing](https://nextjs.org/docs/advanced-features/custom-server) mode. It also uses [express](https://expressjs.com/) to handle routing and page serving.
 
 ## clone repo
@@ -13,7 +11,14 @@ yarn install
 ```
 ### How to use development
 
-npm run dev
+```bash
+yarn && yarn dev
+## > localhost:3000
+```
+
+### How to use Production
+```bash
+yarn && yarn build && yarn start
 ## > localhost:3000
 ```
 ### Typescript

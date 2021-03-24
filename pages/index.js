@@ -1,7 +1,7 @@
 import ReactDOM from 'react-dom';
 import React, { useEffect, useState } from "react";
-import { CardItem } from './components/carditem'
-import { FormModal } from './components/formmodal'
+import CardItem from './components/carditem'
+import FormModal from './components/formmodal'
 import Server from './api/ssr-server'
 import Button from '@material-ui/core/Button';
 import AddIcon from '@material-ui/icons/Add';

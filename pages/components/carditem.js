@@ -6,7 +6,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import { makeStyles } from '@material-ui/core/styles';
 import React, { useEffect, useState } from "react";
-import { SimpleModal } from './modal'
+import SimpleModal from './modal'
 import { blue } from '@material-ui/core/colors';
 
 const useStyles = makeStyles((theme) => ({
@@ -68,4 +68,4 @@ function CardItem(props) {
 }
 
 
-export { CardItem };
+export default CardItem ;

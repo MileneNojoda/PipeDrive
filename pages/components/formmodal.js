@@ -99,4 +99,4 @@ function FormModal(props) {
 
 }
 
-export { FormModal };
+export default FormModal ;

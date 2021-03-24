@@ -57,19 +57,28 @@ function SimpleModal(props) {
 
   function handleClick(e) { e.preventDefault(); console.log(person.id); }
 
+  let name;
   let email;
   let phoneNumber;
-  let location = person['528715166d29a988537acf4167c8f74d4def2743'];
-  let organization = person['084904d6d769ff8d6ddd8013450bef4c72dc3b22'];
-  let assistant = person['dbaf1321c6fe0246767203206c7aa8a996cefa14'];
-  let groups = person['62f8aaa2a16ffbcf14576d1bf58a1f93120fd95d'];
+  let location;
+  let organization;
+  let assistant;
+  let groups;
 
-  if (Array.isArray(person.email) && person.email.length) {
-    email = person.email[0].value;
-  }
+  if (person) {
+    if (Array.isArray(person.email) && person.email.length) {
+      email = person.email[0].value;
+    }
 
-  if (Array.isArray(person.phone) && person.phone.length) {
-    phoneNumber = person.phone[0].value;
+    if (Array.isArray(person.phone) && person.phone.length) {
+      phoneNumber = person.phone[0].value;
+    }
+
+    name = person.name;
+    location = person['528715166d29a988537acf4167c8f74d4def2743'];
+    organization = person['084904d6d769ff8d6ddd8013450bef4c72dc3b22'];
+    assistant = person['dbaf1321c6fe0246767203206c7aa8a996cefa14'];
+    groups = person['62f8aaa2a16ffbcf14576d1bf58a1f93120fd95d'];
   }
 
 
@@ -87,7 +96,7 @@ function SimpleModal(props) {
               <CloseIcon onClick={handleClose} className={classes.close} />
               </p>
 
-              <h3 id="simple-modal-title" className={classes.aligncenter}>{person.name}</h3>
+              <h3 id="simple-modal-title" className={classes.aligncenter}>{name}</h3>
               <Avatar className={classes.avatar}>
               </Avatar>
               <h2 className={classes.contact}>+{phoneNumber}</h2>
@@ -115,4 +124,4 @@ function SimpleModal(props) {
 
 }
 
-export { SimpleModal };
+export default SimpleModal;
